@@ -21,11 +21,11 @@ import {
                 <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
                 <div className="d-flex flex-row align-items-center mb-4 ">
                   <MDBIcon fas icon="user me-3" size='lg'/>
-                  <MDBInput label='First Name' type='text' className='w-100' name='firstName' onChange={registerChangeHandler}/>
+                  <MDBInput label='Full Name' type='text' className='w-100' name='fullName' onChange={registerChangeHandler}/>
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4 ">
                   <MDBIcon fas icon="user me-3" size='lg'/>
-                  <MDBInput label='Last Name' type='text' className='w-100' name='lastName' onChange={registerChangeHandler}/>
+                  <MDBInput label='Phone Number' type='number' className='w-100' name='phoneNumber' onChange={registerChangeHandler}/>
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4">
                   <MDBIcon fas icon="envelope me-3" size='lg'/>
@@ -40,9 +40,9 @@ import {
                   <MDBInput label='Password' type='password' name='password' onChange={registerChangeHandler}/>
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4">
-                <Button className='btn-sm' onClick={navigatePage}>Login?</Button>
+                <Button className='btn-sm' variant='light' onClick={navigatePage}>Login?</Button>
                 </div>
-                <Button className='mb-4' size='lg' onClick={registerSubmitHandler}>Register</Button>  
+                <Button className='mb-1' size='lg' variant="outline-primary" onClick={registerSubmitHandler}>Register</Button>  
               </MDBCol>
               <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
                 <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' fluid/>

@@ -1,8 +1,9 @@
 import LoginForm from "../components/LoginForm";
-import { useEffect, useState} from 'react';
+import { useState} from 'react';
 import { toast } from 'react-toastify';
 import PostDataReq from "../Helpers/PostDataReq";
 import {useNavigate} from 'react-router-dom';
+import axios from "axios";
 
 function LoginPage() {
     const [credentials, setCredentials] = useState({});
@@ -33,7 +34,9 @@ function LoginPage() {
                 sessionStorage.setItem('userId',result.data.data.id);
             }
           } catch (error) {
-                console.log(error)
+            if (axios.isAxiosError(error)) {
+                toast.error(error.response?.data.message); // Access the response data
+              }
           }
         }
     return (

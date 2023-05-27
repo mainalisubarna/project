@@ -3,6 +3,7 @@ import RegisterForm from "../components/RegisterForm"
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RegisterPage = () => {
   const [userData, setUserData] = useState({});
@@ -25,9 +26,11 @@ const RegisterPage = () => {
       toast.success(response.data.message);
     }
   }catch(error){
-    console.log(error);
+    if (axios.isAxiosError(error)) {
+      toast.error(error.response?.data.message); // Access the response data
+    }
   }
-  }
+}
   const navigatePage = (e:any) =>{
     e.preventDefault;
     navigate('/login');
