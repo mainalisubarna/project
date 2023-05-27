@@ -1,5 +1,5 @@
 import LoginForm from "../components/LoginForm";
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import { toast } from 'react-toastify';
 import PostDataReq from "../Helpers/PostDataReq";
 import {useNavigate} from 'react-router-dom';
@@ -16,6 +16,16 @@ function LoginPage() {
     }
     setCredentials(data);
     }
+
+    useEffect(()=>{
+        if (sessionStorage.getItem('isLogged') === 'true') {
+            navigate('/dashboard');
+            toast.success('User Continued the journey Sucessfully',
+            {
+                autoClose: 5000
+            });
+        }
+    },[])
 
     const navigatePage = (e:any)=>{
         e.preventDefault();
