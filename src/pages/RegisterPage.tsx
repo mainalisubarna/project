@@ -16,28 +16,28 @@ const RegisterPage = () => {
     }
     setUserData(dataRegister);
   }
-  const registerSubmitHandler= async (e:any) =>{
+  const registerSubmitHandler = async (e: any) => {
     e.preventDefault();
-    try{
-    const response = await PostDataReq('register',userData);
-    if(response.data.status === true){
-      navigate('/login');
-      setUserData({});
-      toast.success(response.data.message);
+      try {
+        const response = await PostDataReq('register', userData);
+        if (response.data.status === true) {
+          navigate('/login');
+          setUserData({});
+          toast.success(response.data.message);
+        }
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          toast.error(error.response?.data.message); // Access the response data
+        }
+      }
     }
-  }catch(error){
-    if (axios.isAxiosError(error)) {
-      toast.error(error.response?.data.message); // Access the response data
-    }
-  }
-}
-  const navigatePage = (e:any) =>{
+  const navigatePage = (e: any) => {
     e.preventDefault;
     navigate('/login');
   }
   return (
     <>
-    <RegisterForm registerChangeHandler={registerChangeHandler} navigatePage={navigatePage} registerSubmitHandler={registerSubmitHandler} />
+      <RegisterForm registerChangeHandler={registerChangeHandler} navigatePage={navigatePage} registerSubmitHandler={registerSubmitHandler} />
     </>
   )
 }

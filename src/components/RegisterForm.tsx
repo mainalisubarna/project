@@ -27,13 +27,13 @@ import {
                   <MDBIcon fas icon="user me-3" size='lg'/>
                   <MDBInput label='Phone Number' type='number' className='w-100' name='phoneNumber' onChange={registerChangeHandler}/>
                 </div>
-                <div className="d-flex flex-row align-items-center mb-4">
-                  <MDBIcon fas icon="envelope me-3" size='lg'/>
-                  <MDBInput label='Your Email' type='email' name='email' onChange={registerChangeHandler}/>
-                </div>
                 <div className="d-flex flex-row align-items-center mb-4 ">
                   <MDBIcon fas icon="user me-3" size='2x'/>
                   <MDBInput label='DOB' type='text' className='w-100' name='dob' onChange={registerChangeHandler}/>
+                </div>
+                <div className="d-flex flex-row align-items-center mb-4">
+                  <MDBIcon fas icon="envelope me-3" size='lg'/>
+                  <MDBInput label='Your Email' type='email' name='email' onChange={registerChangeHandler}/>
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4">
                   <MDBIcon fas icon="lock me-3" size='lg'/>
