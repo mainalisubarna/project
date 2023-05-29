@@ -11,7 +11,7 @@ const DashBoard = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    if (sessionStorage.getItem('isLogged') !== 'true') {
+    if (!sessionStorage.getItem('userId') || sessionStorage.getItem('isLogged') !== 'true') {
       navigate('/login');
       toast.warn('Please login to continue !!!');
     } else {
@@ -27,9 +27,11 @@ const DashBoard = () => {
     navigate('/login');
     toast.success('Logged out Sucessfully');
   }
+
   return (
     <>
-      <Button className='btn m-1' onClick={logOut}>Logout</Button>
+      
+        <Button className='btn m-1' onClick={logOut}>Logout</Button>
       <Table striped bordered hover>
         <thead>
           <tr>

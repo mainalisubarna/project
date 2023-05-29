@@ -5,11 +5,10 @@ import RegisterPage from './pages/RegisterPage';
 import DashBoard from './pages/DashBoard';
 import { ToastContainer } from 'react-toastify';
 
-
 function App() {
   return (
     <>
-       <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={1000}
         hideProgressBar={false}
@@ -20,9 +19,10 @@ function App() {
         draggable
         pauseOnHover
         theme="light"
-        />
+      />
+      
       <Routes>
-        <Route path='/' element={<LoginPage />} />
+        <Route path='/' element={<LoginPage/>} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/dashboard' element={<DashBoard />} />

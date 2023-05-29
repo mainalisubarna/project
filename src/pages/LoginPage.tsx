@@ -16,9 +16,9 @@ function LoginPage() {
     }
     setCredentials(data);
     }
-
+     
     useEffect(()=>{
-        if (sessionStorage.getItem('isLogged') === 'true') {
+        if (sessionStorage.getItem('userId') && sessionStorage.getItem('isLogged') === 'true') {
             navigate('/dashboard');
             toast.success('User Continued the journey Sucessfully',
             {
@@ -34,10 +34,16 @@ function LoginPage() {
 
     const loginFormSubmit = async (e: any) => {
         e.preventDefault();
+        const email : String = credentials.email;
+        const password : String = credentials.password;
+        if(email && password){
         try {
             const result = await PostDataReq('login', credentials);
             if(result.data.status === true){
-                toast.success(result.data.message);
+                toast.success(result.data.message,
+                    {
+                        autoClose: 5000
+                    });
                 setCredentials({});
                 navigate('/dashboard');
                 sessionStorage.setItem('isLogged', 'true');
@@ -48,7 +54,10 @@ function LoginPage() {
                 toast.error(error.response?.data.message); // Access the response data
               }
           }
+        }else{
+            toast.warn('Please Fill up the login Form properly')
         }
+    }
     return (
         <>
     <LoginForm details={credentials} navigatePage={navigatePage} loginFormSubmit={loginFormSubmit} changeHandler={changeHandler} />
