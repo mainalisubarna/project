@@ -4,8 +4,12 @@ import { toast } from 'react-toastify';
 import PostDataReq from "../Helpers/PostDataReq";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { login } from "../slice/authSlice";
+
 
 function LoginPage() {
+    const dispatch = useDispatch();
     const [credentials, setCredentials] = useState({});
     const navigate = useNavigate();
     const changeHandler = (e:any) =>{
@@ -45,6 +49,7 @@ function LoginPage() {
                         autoClose: 5000
                     });
                 setCredentials({});
+                dispatch(login(true));
                 navigate('/dashboard');
                 sessionStorage.setItem('isLogged', 'true');
                 sessionStorage.setItem('userId',result.data.data.id);

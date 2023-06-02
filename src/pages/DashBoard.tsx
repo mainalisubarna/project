@@ -4,9 +4,12 @@ import { useEffect, useState } from 'react';
 import GetDataReq from '../Helpers/GetDataReq';
 import Table from 'react-bootstrap/Table';
 import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { login } from "../slice/authSlice";
 
 
 const DashBoard = () => {
+  const dispatch = useDispatch(); 
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
@@ -25,13 +28,14 @@ const DashBoard = () => {
     e.preventDefault();
     sessionStorage.clear();
     navigate('/login');
+    dispatch(login(false));
     toast.success('Logged out Sucessfully');
   }
 
   return (
     <>
       
-        <Button className='btn m-1' onClick={logOut}>Logout</Button>
+        <Button className='m-1 btn' onClick={logOut}>Logout</Button>
       <Table striped bordered hover>
         <thead>
           <tr>
